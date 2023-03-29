@@ -1,0 +1,40 @@
+.jobCard {
+  width: 25rem;
+  border: 1px solid #ecedf2;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.jobCard > .icons:hover {
+  color: white;
+  background-color: #4f9de3;
+}
+
+.jobCard > .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  font-size: 2rem;
+  background-color: #ecedf2;
+  color: #4f9de3;
+}
+
+.jobDetails {
+  text-align: left;
+  margin-left: 1.5rem;
+}
+
+.jobDetails > h1 {
+  font-size: 1rem;
+}
+
+.jobDetails > p {
+  color: #888585;
+  font-weight: 300;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,156 @@
+.company-text{
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+}
+.dec-text{
+    font-size: 15px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+.top-m{
+    margin-bottom: 20px;
+}
+.companyItem{
+    width: 96%;
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: -20px;
+}
+.profile{
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 30px;
+}
+.uplode-btn{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+}
+.document-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    height: 120px;
+    width: 200px;
+    border-radius: 5px;
+    transition: .3s;
+    margin: 0;
+    color: #1b2032;
+    font-size: 16px;
+    border: 2px dashed #ced4e1;
+}
+.file-text{
+    margin-left: 50px;
+    font-size: 17px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+
+.addEmployer{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .input-aria{
+    position: relative;
+    width: 420px;
+    display: block;
+    height: 60px;
+    line-height: 30px;
+    padding: 15px 20px;
+    font-size: 15px;
+    color: dimgray;
+    background-color: #f0f5f7;
+    border: 1px solid #f0f5f7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: all .3s ease;
+ }
+ .input-aria1{
+    position: relative;
+    width: 870px;
+    display: block;
+    height: 60px;
+    line-height: 30px;
+    padding: 15px 20px;
+    font-size: 15px;
+    color: dimgray;
+    background-color: #f0f5f7;
+    border: 1px solid #f0f5f7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: all .3s ease;
+    
+ }
+.aria{
+    align-items:normal;
+    height: 200px;
+}
+ /* .add-btn{
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    background-color: #3f0097;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 20px;
+    color: white;
+
+} */
+
+.add-btn{
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    background-color: #0d6efd;
+    font-size: 15px;
+    line-height: 20px;
+    border-radius: 8px;
+    font-weight: 400;
+    padding: 18px 35px 15px;
+    border: none;
+}
+.form-item{
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+.posjob-icon-all-style{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.icon-style-postjob{
+    position: relative;
+   
+    height: 80px;
+    width: 80px;
+    font-size: 40px;
+    background: rgba(25,103,210,.15);
+    color: blue;
+    border-radius: 50%;
+    line-height: 90px;
+    text-align: center;
+    margin-right: 30px;
+}
+.text-style-postjob{
+    font-size: 20px;
+    color: #363636;
+    font-weight: 400;
+}

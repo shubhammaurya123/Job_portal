@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+.search-section {
+  position: relative;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrapper {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+/* .form-pos{
+   position: absolute;
+   z-index: 999;
+   height: 100vh;
+   top:-143px;
+   left: -65px;
+} */
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+.search-form {
+  position: relative;
+  background-color: white;
+  /* width: calc(100% - 50%); */
+  display: flex;
+  /* overflow-y: visible; */
+  overflow-x: hidden;
+  /* overflow-y: visible; */
+  height: 350px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.form-element {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 100%;
+  /* width: calc(100% - 20px); */
+  /* margin-left: 20px; */
+}
+
+.close-icon {
+  content: "x";
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ededed;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}
+
+.form-element input,
+select {
+  width: 300px;
+  height: 50px;
+  position: relative;
+}
+
+.Main-App > button {
+  height: 40px;
+  width: 150px;
+}
+
+.icon {
+  right: 216px;
+  position: absolute;
+  z-index: 1;
+}
+
+.next-prev-cn {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 40px;
+}
+
+.next-btn,
+.prev-btn {
+  cursor: pointer;
+  visibility: visible;
+}
+
+.hide-btn {
+  visibility: hidden;
+}
+.css-b62m3t-container {
+  width: 80%;
+  border: 1px solid black;
+}
+
+.css-1fv7cpv-MenuList {
+  overflow: scroll;
+}
+.css-100ebu3-menu {
+  background-color: rgb(241, 240, 240);
+}
+.css-1fv7cpv-MenuList {
+  padding: 10px;
+}
+.css-bio7mv-option {
+  cursor: pointer;
+}
+.css-bio7mv-option:hover {
+  background-color: rgb(154, 189, 247);
+}
+
+.designation-input .css-g56vrd-indicatorContainer .css-tj5bde-Svg {
+  display: none;
+}
+
+.css-x2yrli-multiValue {
+  margin: 2px;
+  padding: 2px;
+  background-color: rgb(176, 182, 182);
+}
+
+.MuiBox-root {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  width: 500px;
+  border-radius: 25px;
+}
+.css-wxkur6{
+  border-radius: 25px;
+}

@@ -1,0 +1,228 @@
+@import url(
+"https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.AdminApp {
+  background-color: #f0f5f7;
+}
+body {
+  background-color: var(--background-color4);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.main-container {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  font-family: "Jost,sans-serif";
+  z-index: 1;
+}
+
+.main {
+  height: calc(100vh - 70px);
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 40px 30px 30px 30px;
+ 
+}
+ 
+.main::-webkit-scrollbar-thumb {
+  background-image:
+        linear-gradient(to bottom, rgb(0, 0, 85), rgb(0, 0, 50));
+}
+.main::-webkit-scrollbar {
+  width: 5px;
+}
+.main::-webkit-scrollbar-track {
+  background-color: #9e9e9eb2;
+}
+ 
+
+.nav {
+ 
+  width: 250px;
+  background-color: var(--background-color2);
+  position: absolute;
+  top: 0px;
+  left: 00;
+  box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 30px 0 20px 10px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  
+}
+.navcontainer {
+  height: 100vh;
+  width: 250px;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.navcontainer::-webkit-scrollbar {
+  display: none;
+}
+.navclose {
+  width: 80px;
+}
+.nav-option {
+  width: 250px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px 0 20px;
+  gap: 20px;
+  transition: all 0.1s ease-in-out;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.nav-option:hover {
+  border-left: 5px solid #a2a2a2;
+  background-color: #dadada;
+  cursor: pointer;
+}
+.nav-img {
+  height: 30px;
+}
+.nav-upper-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+ 
+.option1 {
+  border-left: 5px solid #010058af;
+  background-color: var(--Border-color);
+  color: white;
+  cursor: pointer;
+}
+.option1:hover {
+  border-left: 5px solid #010058af;
+  background-color: var(--Border-color);
+}
+
+.student{
+   display: flex;
+   width: 70%;
+   justify-content: space-around;
+   align-items: center;
+}
+.setting{
+  display: flex;
+  width: 70%;
+  margin-top:5%;
+  justify-content: center;
+  
+}
+.card{
+  width: 20%;
+  height: 20%;
+  color: white;
+  background-color: green;
+  font-size: 25px;
+  font-weight: 500;
+  padding-top: 30px;
+  cursor: pointer;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.jobpost{
+  text-decoration: none;
+  color: black;
+}
+.decoration{
+  text-decoration: none;
+  color: wheat;
+}
+
+
+
+.checkbox-size{
+   margin-top: 10px;
+   width: 20px;
+   height: 20px;
+   margin-bottom: 20px;
+}
+.title{
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.item-gap{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.extra-gap{
+   margin-top: 4px;
+}
+.Icon-size{
+   height: 20px;
+   width: 20px;
+}
+.item-gap:hover{
+   background-color: rgb(204, 185, 185);
+}
+.role{
+   width: 300px;
+   height: 40px;
+   border-radius: 10px;
+   font-size: 16px;
+}
+.login{
+  width: 80%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center
+}
+.viewpermission{
+  width: 80%;
+  display: flex;
+justify-content: center;
+}
+.table{
+  width: 80%;
+  border-style: ridge;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.table-Data {
+   line-height: 20px;
+}
+
+
+
+.Apps{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.sidenavbar{
+    width: 30%;
+}
+.main-part{
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}

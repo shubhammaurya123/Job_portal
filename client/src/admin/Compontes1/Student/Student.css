@@ -1,0 +1,162 @@
+.student-text{
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+}
+.dec-text{
+    font-size: 15px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+.studentaApp{
+    width: 100%;
+    margin:0;
+}
+.studentItem{
+    width: 100%;
+    margin-top: 40px;
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: -20px;
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.applicant{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 30px;
+}
+.selectItem{
+    padding: 30px;
+}
+.studentlistItem{
+    width: 98%;
+    height: 70px;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    background-color: #f0f5f7;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+.studentAllcardItem{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dropdown{
+    position: relative;
+    height: 45px;
+    width: 155px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: dimgray;
+    margin-left: 20px;
+    line-height: 25px;
+    background-color: #f0f5f7;
+    border-radius: 6px;
+ }
+ .blue-style{
+    color: blue;
+    font-weight: 550;
+    font-size: 18px;
+ }
+ .approved-style{
+    color: green;
+    font-weight: 500;
+    font-size: 18px;
+ }
+ .reject-style{
+    color: red;
+    font-weight: 500;
+    font-size: 18px;
+ }
+
+
+ /* studentCardItemcss */
+
+ .content{
+    margin-top: 10px;
+    margin-left: 20px;
+    
+    color: dimgray;
+
+ }
+ .studentCardItem{
+  display: flex;
+  margin-top: 20px;
+  padding: 15px;
+  margin-right: 20px;
+  width: 47%;
+  height: 250px;
+  border: 1px solid rgb(236, 227, 227);
+  display: flex;
+  border-style: ridge;
+  border-radius: 10px;
+  display: flex;
+}
+.CardItemlistVlaue{
+     gap: 10px;
+     padding-left: 15px;
+     padding-right: 15px;
+    border-radius: 15px;
+    background-color: rgb(233, 243, 247);
+    cursor: pointer;
+    color: dimgray;
+
+}
+.cardImage{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: blue;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.CardItemlist{
+    margin-top: 10px;
+   list-style: none; 
+   display: flex;
+   gap: 10px; 
+}
+.view-btn-style{
+    width: 70%;
+    margin-top: 20px;
+    list-style: none;
+    display: flex;   
+    justify-content: space-between;
+}
+.btn-style{
+    background-color: rgb(233, 243, 247);
+    border: none;
+    width: 35px;
+    height:35px;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 10px;
+    color: dimgray;
+    cursor: pointer;
+    color: rgb(110, 110, 190);
+}
+.btn-style:hover{
+    background-color: blue;
+    color: white
+    
+}
+.name-style{
+    color: #202124;
+     font-weight: 600;
+}
+.role-style{
+    color: blue;
+}

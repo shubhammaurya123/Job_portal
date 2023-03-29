@@ -1,0 +1,75 @@
+.student-text{
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+}
+.dec-text{
+    font-size: 15px;
+    color: dimgray;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+.studentaApp{
+    width: 100%;
+    margin:0;
+}
+.studentItem{
+    width: 96%;
+    margin-top: 40px;
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: -20px;
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.applicant{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 30px;
+}
+.selectItem{
+    padding: 30px;
+}
+
+.studentAllcardItem{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dropdown{
+    position: relative;
+    height: 45px;
+    width: 155px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: dimgray;
+    margin-left: 20px;
+    line-height: 25px;
+    background-color: #f0f5f7;
+    border-radius: 6px;
+ }
+ .search{
+    position: relative;
+    height: 45px;
+    width: 305px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: dimgray;
+    margin-left: 20px;
+    line-height: 25px;
+    background-color: #f0f5f7;
+    border-radius: 6px;
+    border: none;
+ }
+
+ /* studentCardItemcss */
+
+ 
