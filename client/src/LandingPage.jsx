@@ -8,7 +8,7 @@ const LandingPage = () => {
                     <a href="/student/home">For Students</a>
                 </button>
                 <button>
-                    <a href="/employer/home">For Employers</a>
+                    <a href="/employer">For Employers</a>
                 </button>
                 <button>
                     <a href="/admin/dashboard">For Admin</a>

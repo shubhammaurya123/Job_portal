@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { AppContext } from "../../StateProvider/GlobalState";
 import LoginModal from "../LoginModal";
-import "./Navbar.css";
+import "./InnerNavbar.css";
 
 import { AiOutlineUser, AiOutlineLogout, AiOutlineHome } from "react-icons/ai";
 import { CiPaperplane ,CiViewTimeline} from "react-icons/ci";
@@ -11,7 +11,7 @@ import {  BiDetail } from "react-icons/bi";
 import { TbFileInvoice , TbRecharging} from "react-icons/tb";
 import { FiSettings , FiEdit } from "react-icons/fi";
 
-const Navbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => {
+const InnerNavbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => {
   var path = window.location.pathname;
   let urlParts = path.split("/");
   const[activeTab , setActiveTab] = useState(urlParts[2]);
@@ -102,7 +102,7 @@ const Navbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => {
               >
                 <div className="navItemtoggle">
                   <BiDetail className="listItemIcon" />
-                  <a href="/employer/dashboard" className="text-decorate">
+                  <a href="/employer/details" className="text-decorate">
                     Details
                   </a>
                 </div>
@@ -215,7 +215,7 @@ const Navbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => {
   );
 };
 
-export default Navbar;
+export default InnerNavbar;
 
 {
   /* <div className="employer_navbar">

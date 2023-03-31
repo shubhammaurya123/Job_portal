@@ -43,7 +43,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="empHome">
       <LandingSection
         setmodalOpen={setmodalOpen}
         modalOpen={modalOpen}
