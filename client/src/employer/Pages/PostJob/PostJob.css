@@ -95,8 +95,25 @@
     box-sizing: border-box;
     border-radius: 8px;
     transition: all .3s ease;
-    
+
  }
+ .input-aria3{
+    align-items: none;
+    width: 870px;
+    display: block;
+    height: 200px;
+    line-height: 30px;
+    padding: 15px 20px;
+    font-size: 15px;
+    color: dimgray;
+    background-color: #f0f5f7;
+    border: 1px solid #f0f5f7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: all .3s ease;
+
+ }
+
 .aria{
     align-items:normal;
     height: 200px;
@@ -126,7 +143,8 @@
     padding: 18px 35px 15px;
     border: none;
 }
-.form-item{
+.form-item1{
+    display: flex;
     margin-right: 30px;
     margin-bottom: 30px;
 }
@@ -153,4 +171,10 @@
     font-size: 20px;
     color: #363636;
     font-weight: 400;
+}
+.required{
+    color: red;
+    font-size: 17px;
+    font-weight: 600;
+    
 }

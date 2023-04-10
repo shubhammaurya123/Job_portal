@@ -4,7 +4,9 @@ import { getWalletPoints } from "../../functions";
 import "./EmpDetails.css";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
-
+import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
+import { FiInstagram } from "react-icons/fi";
+import { BsTwitter } from "react-icons/bs";
 import { RxEnvelopeClosed } from "react-icons/rx";
 import { BsBriefcase, BsBookmark } from "react-icons/bs";
 const EmpDashboard = () => {
@@ -73,26 +75,26 @@ const EmpDashboard = () => {
             className="cardImage"
           ></img>
           <div className="Se-listItem">
-            <h4 className="cName">Company{details.companyName}</h4>
+            <h4 className="cName">{details.companyName}</h4>
             <ul className="text-style">
               <li className="text-style-li">
                 {" "}
                 <CiLocationOn />
-                Address{details.address}
+                {details.address}
               </li>
               <li className="text-style-li">
                 <BsBriefcase />
-                Acounting {details.designation}
+                 {details.designation}
               </li>
               <li className="text-style-li">
                 {" "}
                 <FiPhoneCall />
-                Phone {details.number}
+                {details.number}
               </li>
               <li className="text-style-li">
                 {" "}
                 <RxEnvelopeClosed />
-                Email {details.email}
+                 {details.email}
               </li>
             </ul>
             <span className="CardItemlistVlaue">vacancies {details.companyHiring === true ? "Yes" : "No"}</span>
@@ -121,26 +123,39 @@ const EmpDashboard = () => {
         <div className="sidebar-widget">
           <ul className="widget-text-style">
             <li className="right-widet-style">
-               <span>Primary industry:</span>
-               <span>software</span>
+              <span className="company-info">Primary industry:</span>
+              <span className="company-info1">software</span>
             </li>
             <li className="right-widet-style">
-               <span>Primary industry:</span>
-               <span>software</span>
+              <span className="company-info">Company size:</span>
+              <span className="company-info1">{details.designation}</span>
             </li>
             <li className="right-widet-style">
-               <span>Primary industry:</span>
-               <span>software</span>
+              <span className="company-info">Phone:</span>
+              <span className="company-info1">{details.number}</span>
             </li>
             <li className="right-widet-style">
-               <span>Primary industry:</span>
-               <span>software</span>
+              <span className="company-info">Mail:</span>
+              <span className="company-info1">{details.email}</span>
             </li>
             <li className="right-widet-style">
-               <span>Primary industry:</span>
-               <span>software</span>
+              <span className="company-info">Location:</span>
+              <span className="company-info1">{details.address}</span>
+            </li>
+            <li className="right-widet-style">
+              <span className="company-info">Social Media:</span>
+              <span>
+                {" "}
+                <div className="social-link">
+                  <FiInstagram className="gap" />
+                  <BsTwitter className="gap" />
+                  <AiFillFacebook className="gap" />
+                  <AiFillLinkedin className="gap" />
+                </div>
+              </span>
             </li>
           </ul>
+          <div className="widget-btn">{details.domainName}</div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // suppress warning
 mongoose.set('strictQuery', true)
 
-const EmployerDB = mongoose.createConnection('mongodb://127.0.0.1:27017/JobPortalAdminDB')
+const EmployerDB = mongoose.createConnection('mongodb+srv://skmaurya:skmaurya@cluster0.hqmrxhw.mongodb.net/?retryWrites=true&w=majority')
 
 const Employer = new mongoose.Schema({
     name: {

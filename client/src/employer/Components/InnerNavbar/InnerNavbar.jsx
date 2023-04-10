@@ -47,16 +47,16 @@ const InnerNavbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => 
          
           <li
             className={`navbarlistItem  ${
-              activeTab === "home" ? "active" : ""
+              activeTab === "dashboard" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("home")}
+            onClick={() => setActiveTab("dashboard")}
           >
             <div className="navItemtoggle">
               <AiOutlineUser className="listItemIcon" />
               <span>
                 {" "}
-                <a href="/employer/home" className="text-decorate">
-                  Home
+                <a href="/employer/dashboard" className="text-decorate">
+                   Dashboard
                 </a>
               </span>
             </div>
@@ -96,9 +96,9 @@ const InnerNavbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => 
             <>
               <li
                 className={`navbarlistItem  ${
-                  activeTab === "dashboard" ? "active" : ""
+                  activeTab === "details" ? "active" : ""
                 }`}
-                onClick={() => setActiveTab("dashboard")}
+                onClick={() => setActiveTab("details")}
               >
                 <div className="navItemtoggle">
                   <BiDetail className="listItemIcon" />

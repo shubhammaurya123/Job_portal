@@ -4,41 +4,38 @@ const jwt = require("jsonwebtoken");
 const funcs = require("../functions");
 const JWT_SECRET = "jhgfsxsxsn";
 const bcrypt = require("bcryptjs");
-var generator = require('generate-password');
+var generator = require("generate-password");
 
 const NUMBER_OF_MINUTES = 10; // Minutes before OTP expires
-
 
 //we want all user so need of this api show I add this api,
 //getUserDetail, gives only one user info so weed need all student info
 const getAllUser = async (req, res) => {
   try {
     const userDetail = await User.find();
-    if(userDetail){
+    if (userDetail) {
       return res.json(userDetail);
-    }else{
-      return res.json({status:404 , data:'user not found'})
+    } else {
+      return res.json({ status: 404, data: "user not found" });
     }
   } catch (e) {
     res.json(e);
   }
 };
 
-
 const getUserDetail = async (req, res) => {
-  
   try {
     const token = req.headers["x-access-token"];
     console.log(token);
     const decoded = jwt.verify(token, JWT_SECRET);
     const userDetail = await User.findOne({ _id: decoded.id });
-    if(userDetail){
-      return res.json({ status:200, data: userDetail });
-    }else{
-      return res.json({status:404 , data:'user not found'})
+    if (userDetail) {
+      return res.json({ status: 200, data: userDetail });
+    } else {
+      return res.json({ status: 404, data: "user not found" });
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.json({ status: 500, msg: "You need to login or register" });
   }
 };
@@ -46,7 +43,6 @@ const getUserDetail = async (req, res) => {
 // to check if user have applied and bookmarked for a job already
 let userJobOptions = {};
 const getUserJob = async (req, res) => {
-
   try {
     const token = req.headers["x-access-token"];
     const jobId = req.params.jobId;
@@ -54,17 +50,16 @@ const getUserJob = async (req, res) => {
     console.log(decoded);
     const data = await User.findOne({ _id: decoded.id });
 
-    const isJobApplied = data.appliedJob.includes(jobId)
-    const isJobBookmarked = data.bookmarkJob.includes(jobId)
-    const isJobLiked = data.likedJob.includes(jobId)
-    const isJobDisliked = data.disLikedJob.includes(jobId)
+    const isJobApplied = data.appliedJob.includes(jobId);
+    const isJobBookmarked = data.bookmarkJob.includes(jobId);
+    const isJobLiked = data.likedJob.includes(jobId);
+    const isJobDisliked = data.disLikedJob.includes(jobId);
 
-    userJobOptions.jobIsApplied = isJobApplied
-    userJobOptions.jobIsBookmarked = isJobBookmarked
-    userJobOptions.jobIsLiked = isJobLiked
-    userJobOptions.jobIsDisLiked = isJobDisliked
+    userJobOptions.jobIsApplied = isJobApplied;
+    userJobOptions.jobIsBookmarked = isJobBookmarked;
+    userJobOptions.jobIsLiked = isJobLiked;
+    userJobOptions.jobIsDisLiked = isJobDisliked;
     res.json({ status: 200, data: userJobOptions });
-
   } catch (e) {
     console.log(e);
     res.json({ status: "error", msg: "Something went wrong" });
@@ -123,16 +118,16 @@ const deleteBookmarkedJob = async (req, res) => {
 const likeJob = async (req, res) => {
   const token = req.headers["x-access-token"];
   const decoded = jwt.verify(token, JWT_SECRET);
-  const user = await User.findOne({_id:decoded.id})
-  try { 
+  const user = await User.findOne({ _id: decoded.id });
+  try {
     const jobId = req.params.jobId;
-    let incThis = { $inc: { "like": 1 } }
-    let pushThis = {$push:{"likedJob" : jobId}}
-    let isDisliked = user.disLikedJob.includes(jobId)
-    userAction(user,jobId,incThis,pushThis,false,isDisliked)
-    return res.json({status:200})
+    let incThis = { $inc: { like: 1 } };
+    let pushThis = { $push: { likedJob: jobId } };
+    let isDisliked = user.disLikedJob.includes(jobId);
+    userAction(user, jobId, incThis, pushThis, false, isDisliked);
+    return res.json({ status: 200 });
   } catch (e) {
-   console.log(e)
+    console.log(e);
   }
 };
 
@@ -141,32 +136,39 @@ const likeJob = async (req, res) => {
 const dislikeJob = async (req, res) => {
   const token = req.headers["x-access-token"];
   const decoded = jwt.verify(token, JWT_SECRET);
-  const user = await User.findOne({_id:decoded.id})
-  try { 
+  const user = await User.findOne({ _id: decoded.id });
+  try {
     const jobId = req.params.jobId;
-    let incThis = { $inc: { "dislike": 1 } }
-    let pushThis = {$push:{"disLikedJob" : jobId}}
-    let isLiked  = user.likedJob.includes(jobId);
-    userAction(user,jobId,incThis,pushThis,isLiked,false)
-    res.json({status:200})
+    let incThis = { $inc: { dislike: 1 } };
+    let pushThis = { $push: { disLikedJob: jobId } };
+    let isLiked = user.likedJob.includes(jobId);
+    userAction(user, jobId, incThis, pushThis, isLiked, false);
+    res.json({ status: 200 });
   } catch (e) {
-   console.log(e)
+    console.log(e);
   }
 };
 
-const userAction = async(user,jobId ,incThis,pushThis,isLiked ,isDisliked)=>{
-     const job = await EmployerModel.findOne({_id:jobId})
-     await job.updateOne(incThis)
-     await user.updateOne(pushThis)
-    if(isLiked){
-      await job.updateOne({$inc: { like: -1 } })
-      await user.updateOne({ $pull: { likedJob: jobId } }) ;
-     }
-    if(isDisliked){
-      await job.updateOne({$inc: { dislike: -1 } })
-      await user.updateOne({ $pull: { disLikedJob: jobId } }) ;
-    }
-}
+const userAction = async (
+  user,
+  jobId,
+  incThis,
+  pushThis,
+  isLiked,
+  isDisliked
+) => {
+  const job = await EmployerModel.findOne({ _id: jobId });
+  await job.updateOne(incThis);
+  await user.updateOne(pushThis);
+  if (isLiked) {
+    await job.updateOne({ $inc: { like: -1 } });
+    await user.updateOne({ $pull: { likedJob: jobId } });
+  }
+  if (isDisliked) {
+    await job.updateOne({ $inc: { dislike: -1 } });
+    await user.updateOne({ $pull: { disLikedJob: jobId } });
+  }
+};
 
 //  Sending OTP and Registering User
 const sendUserOtp = async (req, res, next) => {
@@ -181,14 +183,14 @@ const sendUserOtp = async (req, res, next) => {
 
   // Enter the details in the database with "verified" property set to false
   const { name, password, email, mobile, age, gender } = req.body;
-  
+
   // Hashing the password using bcrypt library
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  let message = `The OTP for your account verification is ${OTP}`
+  let message = `The OTP for your account verification is ${OTP}`;
   try {
-    await funcs.sendOTP(req.body.email, message,"OTP for verification");
+    await funcs.sendOTP(req.body.email, message, "OTP for verification");
     await User.create({
       name,
       email,
@@ -252,63 +254,72 @@ const verifyUserOtp = async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    return res.json({status:500 , statusMsg:'Internal Server error'})
+    return res.json({ status: 500, statusMsg: "Internal Server error" });
   }
 };
 
 // API for sending temporary password for password reset to user email
 
-const sendTempPassword = async(req,res)=>{
+const sendTempPassword = async (req, res) => {
   let temp_password = generator.generate({
     length: 15,
-    numbers: true
+    numbers: true,
   });
-  let email_message = `Temporary password for reseting your password is ${temp_password}`
-  try{
-        
-        const user = await User.findOneAndUpdate({email:req.body.email} , {$set:{temp_password:temp_password}})
-        if(!user){
-          return res.json({status:404 , statusMsg:"Email not found"})
-        }
-       funcs.sendOTP(req.body.email , email_message , "Temporary password")
-       return res.json({status:200 , statusMsg:`Temporary Password is sent to ${req.body.email}`})
-  }catch(e){
-      return res.json({status:500 , statusMsg:"Internal Server Error"})
-  }
-} 
-
-const verifyTempPassword = async(req,res)=>{
-   try{
-    const isUser = await User.findOne({email:req.body.email})
-    if(isUser.temp_password === req.body.temp_password){
-            return res.json({status:200,statusMsg:true})
-    }else{
-        return res.json({status:404,statusMsg:'Please Check Your Temporary Password'})
+  let email_message = `Temporary password for reseting your password is ${temp_password}`;
+  try {
+    const user = await User.findOneAndUpdate(
+      { email: req.body.email },
+      { $set: { temp_password: temp_password } }
+    );
+    if (!user) {
+      return res.json({ status: 404, statusMsg: "Email not found" });
     }
-   }catch(e){
-    return res.json({status:500 , statusMsg:"Internal Server Error"})
-   }
-}
+    funcs.sendOTP(req.body.email, email_message, "Temporary password");
+    return res.json({
+      status: 200,
+      statusMsg: `Temporary Password is sent to ${req.body.email}`,
+    });
+  } catch (e) {
+    return res.json({ status: 500, statusMsg: "Internal Server Error" });
+  }
+};
+
+const verifyTempPassword = async (req, res) => {
+  try {
+    const isUser = await User.findOne({ email: req.body.email });
+    if (isUser.temp_password === req.body.temp_password) {
+      return res.json({ status: 200, statusMsg: true });
+    } else {
+      return res.json({
+        status: 404,
+        statusMsg: "Please Check Your Temporary Password",
+      });
+    }
+  } catch (e) {
+    return res.json({ status: 500, statusMsg: "Internal Server Error" });
+  }
+};
 
 //API for Changing password after verifying temporary password
-const changePassword = async(req,res)=>{
-
-  try{
-        const user = await User.findOne({email:req.body.TempEmail})
-        if(user.temp_password === req.body.temp_password){
-          const salt = await bcrypt.genSalt(10);
-          const hashedPassword = await bcrypt.hash(req.body.new_password, salt);
-          await user.updateOne({password:hashedPassword})
-          return res.json({status:200 , statusMsg :'Password Reset'})
-        }else{
-          return res.json({status:404 ,statusMsg:'Please Check your Temporary password'})
-        }
-  }catch(e){
-       console.log(e)
-       return res.json({status:500 , statusMsg:"Internal Server Error"})
+const changePassword = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.TempEmail });
+    if (user.temp_password === req.body.temp_password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.new_password, salt);
+      await user.updateOne({ password: hashedPassword });
+      return res.json({ status: 200, statusMsg: "Password Reset" });
+    } else {
+      return res.json({
+        status: 404,
+        statusMsg: "Please Check your Temporary password",
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    return res.json({ status: 500, statusMsg: "Internal Server Error" });
   }
-}
-
+};
 
 module.exports = {
   getUserDetail,
@@ -323,5 +334,5 @@ module.exports = {
   sendTempPassword,
   verifyTempPassword,
   changePassword,
-  getAllUser
+  getAllUser,
 };

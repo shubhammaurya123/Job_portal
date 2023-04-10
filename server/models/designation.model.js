@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const AdminDatabase = mongoose.createConnection('mongodb://127.0.0.1:27017/JobPortalAdminDB')
+const AdminDatabase = mongoose.createConnection('mongodb+srv://skmaurya:skmaurya@cluster0.hqmrxhw.mongodb.net/?retryWrites=true&w=majority')
 
 const Designation = new mongoose.Schema(
 	{

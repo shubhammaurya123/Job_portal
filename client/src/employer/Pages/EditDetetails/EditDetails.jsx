@@ -45,7 +45,7 @@ const EditDetail = () => {
     const data = await req.json();
     if (data.status === "ok") {
       alert("Details Edited Successfully!");
-      window.location.href = "/employer/dashboard";
+      window.location.href = "/employer/details";
     } else {
       alert(data.error);
     }
@@ -110,6 +110,55 @@ const EditDetail = () => {
             />
           </div>
           <div className="form-item">
+            <label> Contect Number:</label>
+            <br />
+            <input
+                type="mobile"
+                placeholder="Contect Number"
+                className="input-aria"
+                value={tempDetails.numner}
+                onChange={(e) =>
+                setTempDetails({
+                    ...tempDetails,
+                    number: e.target.value,
+                })
+                }
+            />
+          </div>
+          <div className="form-item">
+            <label> Domain Name:</label>
+            <br />
+            <input
+                type="text"
+                placeholder="domain Name"
+                className="input-aria"
+                value={tempDetails.domainName}
+                onChange={(e) =>
+                setTempDetails({
+                    ...tempDetails,
+                    domainName: e.target.value,
+                })
+                }
+            />
+          </div>
+
+          <div className="form-item">
+            <label> Email:</label>
+            <br />
+            <input
+                type="email"
+                placeholder="Company Name"
+                className="input-aria"
+                value={tempDetails.email}
+                onChange={(e) =>
+                setTempDetails({
+                    ...tempDetails,
+                    email: e.target.value,
+                })
+                }
+            />
+          </div>
+          <div className="form-item">
             <label> Designation</label>
             
             <input
@@ -125,6 +174,24 @@ const EditDetail = () => {
                 }
                 />
           </div>
+
+          <div className="form-item">
+            <label> Pin Code:</label>
+            <br />
+            <input
+            type="text"
+            placeholder="Pin code"
+            className="input-aria"
+            value={tempDetails.pinCode}
+            onChange={(e) =>
+                setTempDetails({
+                ...tempDetails,
+                pinCode: e.target.value,
+                })
+            }
+            />
+          </div>
+
           <div className="form-item">
             <label> Address:</label>
             <br />

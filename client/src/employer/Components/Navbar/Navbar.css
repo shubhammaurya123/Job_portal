@@ -1,0 +1,75 @@
+.Navbar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    overflow: auto;
+    width: 300px;
+    padding-top: 40px;
+    background: #fff;
+    color: dimgray;
+    transition: all .3s ease;
+    z-index: 9;
+    border: 1px solid #ecedf2;
+    font-size: 100%;
+    box-shadow: 0 6px 15px rgb(64 79 104 / 5%);
+}
+.list{
+    list-style: none;
+    line-height: 28px;
+    font-weight: 400;
+}
+.inner-bar{
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+.navbarlistItem{
+    font-size: 12px;
+    font-weight: 400;
+    row-gap: 10px;
+    width: 220px;
+    margin-top: 20px;
+   
+}
+.navItemtoggle{
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    margin-left: 25px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+ }
+
+.listItemIcon{
+    margin-right: 20px;
+    font-size: 22px;
+    align-items: center;
+}
+.navbarlistItem:hover{
+    background-color: rgb(193, 220, 231);
+    border-radius: 8px;
+ }
+ .list-style-nav{
+    list-style: none;
+    color: dimgrey;
+ }
+ .list-item{
+    padding-left: 70px;
+}
+.item-gap{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.active{
+    font-size: 12px;
+    font-weight: 400;
+    row-gap: 10px;
+    width: 220px;
+    margin-top: 20px;
+    background-color: rgb(193, 220, 231);
+    border-radius: 8px;
+   
+}

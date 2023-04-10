@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const StudentDB = mongoose.createConnection('mongodb://127.0.0.1:27017/jobPortalstudentDB')
+const StudentDB = mongoose.createConnection('mongodb+srv://skmaurya:skmaurya@cluster0.hqmrxhw.mongodb.net/?retryWrites=true&w=majority')
 
 const User = new mongoose.Schema(
 	{

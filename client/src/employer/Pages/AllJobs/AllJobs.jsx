@@ -2,19 +2,17 @@ import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import CardItem from "./CardItem";
 const AllJobs = () => {
-  const [userEmail, setuserEmail] = useState("");
+  const token = localStorage.getItem("token");
+  const employer = jwt_decode(token);
+  const [userEmail, setuserEmail] = useState(employer.email);
   const [data, setData] = useState([]);
   const getPosts = async () => {
     const req = await fetch(
       `http://localhost:9002/employer/api/viewAllAdminJobs/${userEmail}`
     );
     const jsonData = await req.json();
-    if (data.status === "ok") {
       // console.log(data.posts)
-      setData(data);
-    } else {
-      alert(data.error);
-    }
+      setData(jsonData);
     // console.log(data)
   };
 
@@ -43,7 +41,15 @@ const AllJobs = () => {
         <div className="row">
           <span className="applicant">Posted Job</span>
         </div>
-        <div className="studentAllcardItem">
+
+        <ul className="studentlistItem">
+          <l1 className="blue-style">Title</l1>
+          <l1 className="blue-style">Applications</l1>
+          <l1  className="blue-style">Created & Expired</l1>
+          <l1 className="blue-style">	Status</l1>
+          <l1  className="blue-style" >Action</l1>
+        </ul>
+        <div className="studentAllcardItem1">
           {data.length === 0 && <h2>No Job found</h2>}
           {data.length > 0 &&
             data.map((item, index) => (
@@ -63,6 +69,8 @@ const AllJobs = () => {
                 mode={item.mode}
                 skills={item.skills}
                 value={"postjob"}
+                length = {item.applied.length}
+                item = {item}
               />
             ))}
         </div>

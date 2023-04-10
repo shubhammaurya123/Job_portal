@@ -83,6 +83,43 @@ export const verifyOTP = async (email, password, OTP, e) => {
   }
 };
 
+
+export const check =(jobDetails) =>{
+      if(!jobDetails.job_title) {
+         alert('Enter Job title')
+          return false;
+      }
+      if(!jobDetails.skills) {
+        alert('Enter Job skills')
+         return false;
+     }
+     if(!jobDetails.location) {
+      alert('Enter Job location')
+       return false;
+     }
+     if(!jobDetails.role) {
+      alert('Enter Job role')
+     return false;
+    }
+    if(!jobDetails.walkIn_details.contact_number) {
+      alert('Enter Contact Number')
+     return false;
+    }
+    if(!jobDetails.mode) {
+      alert('Plese Chose Work mode')
+     return false;
+    }
+    if(!jobDetails.mode) {
+      alert('Plese Chose Work mode')
+     return false;
+    }
+    if(!jobDetails.companyType) {
+      alert('Plese Chose Company type')
+     return false;
+    }
+    return true;
+
+}
 export const createPost = async (jobDetails, e) => {
   e.preventDefault();
   console.log(jobDetails.postedBy);

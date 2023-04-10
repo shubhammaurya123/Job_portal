@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const AdminUser = mongoose.createConnection('mongodb://127.0.0.1:27017/JobPortalAdminDB')
+const AdminUser = mongoose.createConnection('mongodb+srv://skmaurya:skmaurya@cluster0.hqmrxhw.mongodb.net/?retryWrites=true&w=majority')
 const UserSchema = new Schema({
   
     role:{

@@ -1,9 +1,6 @@
 // Changes on merging ---> change path of employer model
 const EmployerModel = require("../models/employer.model");
 
-
-
-
 //  Return job according to user search
 const getSearchedJob = async (req, res) => {
   const workMode = ["Work from office", "Work from home", "Hybrid", "Temp WFH"];
@@ -11,7 +8,7 @@ const getSearchedJob = async (req, res) => {
   let salaryQuery = {};
   const queryObject = {};
   let expQuery = {};
-  console.log(req.query)
+  console.log(req.query);
   //  Searching JOB
   if (req.query.q === "search") {
     try {
@@ -91,8 +88,8 @@ const getSearchedJob = async (req, res) => {
       };
     }
     // Job filter by Experience
-    if(exp){ 
-      const minexp = 0
+    if (exp) {
+      const minexp = 0;
       const maxexp = Number(exp);
       expQuery = {
         $and: [
@@ -115,8 +112,8 @@ const getSearchedJob = async (req, res) => {
     }
 
     const jobData = await EmployerModel.find({
-      $and: [queryObject, salaryQuery,expQuery],
-    }).sort({"salaryRange.maxSal":-1,"work_exp.maxExp":-1});
+      $and: [queryObject, salaryQuery, expQuery],
+    }).sort({ "salaryRange.maxSal": -1, "work_exp.maxExp": -1 });
     res.json({ jobData });
   }
 };
@@ -127,8 +124,11 @@ const getSingleJob = async (req, res) => {
   const jobRole = req.params.title;
   try {
     const JobDetail = await EmployerModel.findOne({ _id: jobId });
-    const skillList = JobDetail.skills
-    const similarJob=  await EmployerModel.find({skills: {$all: skillList} ,_id:{$ne:jobId}})
+    const skillList = JobDetail.skills;
+    const similarJob = await EmployerModel.find({
+      skills: { $all: skillList },
+      _id: { $ne: jobId },
+    });
     res.json({ status: "ok", data: JobDetail, similarJob: similarJob });
   } catch (e) {
     res.json({ status: "error", errorMsg: "Something went wrong" });
@@ -140,7 +140,7 @@ const updateStudentApplied = async (req, res) => {
     const id = req.params.id;
     const jobId = req.params.jobId;
     const query = { _id: jobId };
-    const update = { $push: { applied: id } };
+    const update = { $push: { applied: { studentId: id } } };
     const studentApplied = await EmployerModel.updateOne(query, update);
     res.json({ status: "ok", msg: true });
   } catch (e) {
@@ -151,5 +151,4 @@ module.exports = {
   getSearchedJob,
   getSingleJob,
   updateStudentApplied,
-  
 };
