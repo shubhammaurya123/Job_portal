@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import jwt_decode from "jwt-decode";
 
-import { createPost, check } from "../../functions";
+// import { createPost, check } from "../../functions";
 
 // import { useContext } from "react";
 // import { AppContext } from "../StateProvider/GlobalState";
@@ -112,11 +112,11 @@ const EmpAddFeatured = () => {
   const submitForm = (jobDetails, e) => {
     e.preventDefault();
 
-    if (!check(jobDetails)) {
-      return;
-    }
+    // if (!check(jobDetails)) {
+    //   return;
+    // }
     if (isLoggedIn) {
-      createPost(jobDetails, e);
+      // createPost(jobDetails, e);
       sessionStorage.removeItem("jobDetails");
     } else {
       sessionStorage.setItem("jobDetails", JSON.stringify(jobDetails));
@@ -152,19 +152,20 @@ const EmpAddFeatured = () => {
         </div>
 
         <form className="addEmployer">
-          <div className="form-item1">
+        <div className="input-aria1 from-item top-m">
             <input
-              type="text"
-              className="input-aria1"
-              placeholder="Job featured"
+              type="checkbox"
+              placeholder="Featured Job"
               value={jobDetails.featured}
+              className="checkbox"
               onChange={(e) =>
                 setJobDetails({
                   ...jobDetails,
-                  featured: e.target.value,
+                  featured:jobDetails.featured
                 })
               }
             />
+            <label>Featured Job</label>
           </div>
           <div className="form-item1">
             <input

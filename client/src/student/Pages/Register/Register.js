@@ -111,7 +111,7 @@ const Register_new = () => {
   };
 
   return (
-    <main className="register-cn">
+    <main className="register-cn" style={{"marginTop":"20px"}}>
       <div>
         <h1>Register</h1>
         <form onSubmit={handleSubmit} encType="multipart/form-data">

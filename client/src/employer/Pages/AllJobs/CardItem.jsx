@@ -6,6 +6,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineCheck } from "react-icons/ai";
 import {  FiEdit } from "react-icons/fi";
+
 import fecthContext from "../../Hooks/FecthContext";
 
 import "./CardItem.css";
@@ -106,7 +107,7 @@ function CardItem(props) {
             </div>
           </li>
 
-          <li onClick={EditFeatured}>
+          <li >
             <div className="btn-style">
               <FiEdit />
             </div>

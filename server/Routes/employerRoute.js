@@ -17,6 +17,7 @@ const JWT_SECRET_KEY = "secretKey";
 const Employer = require("../models/employerProfile.model");
 const Jobs = require("../models/employer.model");
 const Student = require("../models/user.model");
+const { set } = require("mongoose");
 
 router.route("/").get((req, res) => {
   res.json({ status: "ok", msg: "Hello World" });
@@ -317,13 +318,21 @@ router.route("/api/RecentAppliedStudent/:email").get(async (req, res) => {
     const posts = allPosts.filter((jobPost) => {
       return jobPost.postedBy.email == req.params.email;
     });
-    console.log({ posts });
-    console.log(req.params.email);
+    // console.log({ posts });
+    // console.log(req.params.email);
     var allStudents = [];
     for (let i = 0; i < posts.length; ++i) {
       allStudents =allStudents.concat(posts[i].applied);
     }
-    const latestAppliedStudents =allStudents.sort((a, b) => b.appliedAt - a.appliedAt).slice(0, 10);
+    //for calculating the one student one time so i used this uniqueObjects function
+    const uniqueObjects = allStudents.reduce((acc, obj) => {
+      if (!acc.find(item => item.studentId === obj.studentId)) {
+        acc.push(obj);
+      }
+      return acc;
+    }, []);
+    allStudents =[...uniqueObjects];
+    const latestAppliedStudents =allStudents.sort((a, b) => b.appliedAt - a.appliedAt).slice(0,10);
    
     console.log(latestAppliedStudents);
     res.json(latestAppliedStudents);

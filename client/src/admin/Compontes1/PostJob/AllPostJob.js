@@ -43,7 +43,10 @@ function AllPostJob() {
              vacancies = {item.vacancies}
              mode = {item.mode}
              date ={item.postedDate.slice(0, 10)}
-             skills={item.skills} value={"postjob"}/>
+             length = {item.applied.length}
+             skills={item.skills} value={"postjob"}
+             item ={item}/>
+             
           ))
         }
            

@@ -38,7 +38,7 @@ function DashboardCard(props) {
      
         <div className="cardvalue">
           <div className="card-number-value3">74</div>
-          <div className="card-text-value">Posted Jobs</div>
+          <div className="card-text-value">Massage</div>
         </div>
       </div>
       <div className="dashboardCardItem">
@@ -48,7 +48,7 @@ function DashboardCard(props) {
      
         <div className="cardvalue">
           <div className="card-number-value4">32</div>
-          <div className="card-text-value">Posted Jobs</div>
+          <div className="card-text-value">SortList</div>
         </div>
       </div>
    

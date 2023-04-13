@@ -113,7 +113,10 @@
     color: white;
 
 } */
-
+.checkbox{
+    width: 17px;
+    height: 17px;
+}
 .add-btn{
     text-align: center;
     white-space: nowrap;

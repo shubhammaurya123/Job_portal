@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import DashboardCard from "./DashboardCard";
-import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import "./EmpDashboard.css";
+
 import { BsBriefcase, BsBookmark } from "react-icons/bs";
 import Applications from "../Application/Applications";
 import jwt_decode from "jwt-decode";
 import EmpCardItem from "../Application/EmpCardItem";
+import DashboardChart from "../../Components/DashboardChart/DashobardChart";
 function EmpDashboard() {
   const token = localStorage.getItem("token");
   const employer = jwt_decode(token);
   const [data, setData] = useState([]);
   const [size, setSize] = useState();
-  const[jobId , setJobId] =useState();
+  const [jobId, setJobId] = useState();
+  const [timeRange, setTimeRange] = useState(1);
   const populateData = async () => {
-   
     const resposne = await fetch(
       `http://localhost:9002/employer/api/RecentAppliedStudent/${employer.email}`
     );
     const jsonData = await resposne.json();
-    console.log(jsonData);
+
     // console.log("jsonDATA", jsonData);
     // setDetails(jsonData);
     setJobId(jsonData);
@@ -49,14 +51,22 @@ function EmpDashboard() {
       <div className="dec-text">Ready to jump back in?</div>
       <DashboardCard size={data} num_applicant={size} />
       <div className="chart-noti">
-        <div className="chart-bar">
-          <div className="profile-view">Your Profile Views</div>
-          <select value="Select Job" className="dropdown">
-            <option>Last 6 Month</option>
-            <option>Last 12 Month</option>
-            <option>Last 24 Month</option>
-          </select>
+        <div className="chart-bar-emp">
+          <div className="chart-val">
+            <div className="profile-view">Your Profile Views</div>
+            <select
+              value={timeRange}
+              className="dropdown"
+              onChange={(e) => setTimeRange(e.target.value)}
+            >
+              <option value={1}>Last 2 Month</option>
+              <option value={3}>Last 3 Month</option>
+              <option value={6}>Last 6 Month</option>
+            </select>
+          </div>
+          <DashboardChart timeRange={timeRange} />
         </div>
+
         <div className="notification-bar">
           <div className="notification-text">Notification</div>
           <div className="message">
@@ -107,12 +117,16 @@ function EmpDashboard() {
         </div>
 
         <div className="studentAllcardItem">
-        {jobId &&
+          {jobId &&
             jobId.map((applicant, ind) => {
-              return <EmpCardItem key ={applicant.appliedAt} applicantId={applicant.studentId} />;
+              return (
+                <EmpCardItem
+                  key={applicant.appliedAt}
+                  applicantId={applicant.studentId}
+                />
+              );
             })}
         </div>
-        
       </div>
     </div>
   );

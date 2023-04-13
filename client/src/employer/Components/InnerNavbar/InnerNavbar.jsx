@@ -153,62 +153,16 @@ const InnerNavbar = ({ openLogin, closeLogin, openRegister, closeRegister }) => 
                 <div className="navItemtoggle">
                   <AiOutlineLogout className="listItemIcon" />
                   <span>
-                    <a className="text-decorate" onClick={logoutUser} href="">
+                    <span className="text-decorate" onClick={logoutUser} >
                       Log Out
-                    </a>
+                    </span>
                   </span>
                 </div>
               </li>
             </>
           )}
 
-          {!isLoggedIn && (
-            <>
-              <li
-                className={`navbarlistItem  ${
-                  activeTab === "postjob" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("postjob")}
-              >
-                <div className="navItemtoggle">
-                  <TbFileInvoice className="listItemIcon" />
-
-                  <span>
-                    <a
-                      className="text-decorate"
-                      onClick={(e) => {
-                        openLogin();
-                      }}
-                      // href="/employer/login"
-                    >
-                      Login
-                    </a>
-                  </span>
-                </div>
-              </li>
-
-              <li
-                className={`navbarlistItem  ${
-                  activeTab === "setting" ? "active" : ""
-                }`}
-                onClick={() => setActiveTab("setting")}
-              >
-                <div className="navItemtoggle">
-                  <FiSettings className="listItemIcon" />
-                  <span>
-                    {" "}
-                    <a
-                      className="text-decorate"
-                      onClick={(e) => openRegister()}
-                      // href="/employer/register"
-                    >
-                      Register
-                    </a>
-                  </span>
-                </div>
-              </li>
-            </>
-          )}
+         
         </ul>
       </div>
     </div>

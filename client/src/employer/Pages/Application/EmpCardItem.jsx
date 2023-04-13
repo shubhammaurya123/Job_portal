@@ -11,7 +11,7 @@ import { useContext } from "react";
 
 //  import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 function EmpCardItem(props) { 
-    const{name , mobile,email ,value, age , gender,profileVideoLink , applicantId} = props
+    const{ applicantId} = props
      const[details , setDetails] = useState({})
     const getDetails = async (id) => {
         const res = await fetch('http://localhost:9002/employer/api/applicantDetails', {
@@ -25,7 +25,7 @@ function EmpCardItem(props) {
         })
     
         const data = await res.json()
-        console.log(data);
+        // console.log(data);
         if (data.status === 'ok') {
             setDetails(data.applicant)
             // console.log(data)
@@ -58,18 +58,21 @@ function EmpCardItem(props) {
         <span>
           {" "}
           <CiLocationOn />
-          {details.email}
+           India
         </span>
       </div>
 
+      <span>
+          {details.email}
+        </span>
+     
       <div>
-        <MdAttachMoney />
          {details.age} years
       </div>
 
       <ul className="CardItemlist">
-        <li className="CardItemlistVlaue">{details.gender}</li>
-        <li className="CardItemlistVlaue"></li>
+        <li className="CardItemlistVlaue">{details.gender ? details.gender :"Male" }</li>
+        <li className="CardItemlistVlaue">App</li>
         {/* <li className="CardItemlistVlaue">Digital</li> */}
       </ul>
 

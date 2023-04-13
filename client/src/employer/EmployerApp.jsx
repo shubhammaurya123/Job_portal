@@ -23,7 +23,7 @@ import EmpDashboard from "./Pages/EmpDashboard/EmpDashboard";
 import Applications from "./Pages/Application/Applications";
 import Recharge from "./Pages/Recharge/Recharge";
 import FecthState from "./Hooks/FecthState";
-import EmpAddFeatured from "./Components/Featured/Featured";
+
 
 import AppliedStudnet from "./Components/AppliedStudent/AppliedStudent";
 const App = () => {
@@ -104,7 +104,7 @@ const App = () => {
                 <Route path="details" element={<EmpDetails />}></Route>
                 <Route path="edit" element={<EditDetail />}></Route>
                 <Route path="postJob" element={<EmpPostJob />}></Route>
-                <Route path="featured" element={<EmpAddFeatured />}></Route>
+               
                 <Route path="appliedStudent" element={<AppliedStudnet />}></Route>
                 <Route
                   path="viewApplications"
