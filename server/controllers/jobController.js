@@ -147,8 +147,35 @@ const updateStudentApplied = async (req, res) => {
     res.json({ status: "error", msg: "Something went wrong" });
   }
 };
+const updateStudentApproved = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const jobId = req.params.jobId;
+    const query = { _id: jobId };
+    const update = { $push: {  approvedStudentId:{ studentId: id }} };
+    const studentApplied = await EmployerModel.updateOne(query, update);
+    res.json({ status: "ok", msg: true });
+  } catch (e) {
+    res.json({ status: "error", msg: "Something went wrong" });
+  }
+};
+const updateStudentRejected = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const jobId = req.params.jobId;
+    const query = { _id: jobId };
+    const update = { $push: {  rejectedStudentId:{ studentId: id } } };
+    const studentRejected= await EmployerModel.updateOne(query, update);
+    res.json({ status: "ok", msg: true });
+  } catch (e) {
+    res.json({ status: "error", msg: "Something went wrong" });
+  }
+};
 module.exports = {
   getSearchedJob,
   getSingleJob,
   updateStudentApplied,
+  updateStudentApproved,
+  updateStudentRejected
+
 };

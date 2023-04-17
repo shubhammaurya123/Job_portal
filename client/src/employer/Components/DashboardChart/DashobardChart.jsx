@@ -1,8 +1,18 @@
-
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 
-const labels = ["January", "February", "March", "April", "May", "June"];
+
+const DashboardChart = (props) => {
+
+  var labels = ["January", "February", "March", "April", "May", "June"];
+
+  if(props.timeRange ==2) {
+    labels = ["January", "February"];
+  }else if(props.timeRange ==3) {
+    labels = ["January", "February", "March"];
+  }else if(props.timeRange ==1) {
+    labels = ["Today",];
+  }
 
 const data = {
   labels: labels,
@@ -34,7 +44,6 @@ const data = {
   ],
 };
 
-const DashboardChart = (props) => {
   console.log(props.timeRange)
   return (
     <div>

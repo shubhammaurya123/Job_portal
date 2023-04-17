@@ -1,0 +1,19 @@
+.showTags{
+    margin-top: 40x;
+    list-style: none ;
+    display: flex;
+    flex-wrap: wrap;
+    gap :10px;
+}
+.tag-style{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(172, 172, 231);
+}
+.cross-tag{
+    width: 20px;
+    height: 18px;
+    margin-left: 5px;
+    margin-top: 5px;
+
+}

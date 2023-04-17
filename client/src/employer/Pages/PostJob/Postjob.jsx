@@ -8,11 +8,16 @@ import { createPost , check} from "../../functions";
 import { BsBriefcase } from "react-icons/bs";
 import { FiCheckCircle } from "react-icons/fi";
 import { GiMoneyStack } from "react-icons/gi";
-
+import SkillTagsInput from "../../Components/SkillTagInput/SkillTagInput";
 const EmpPostJob = () => {
   const [isLoggedIn, setisLoggedIn] = useState(false);
-
+  const [tags, setTags] = React.useState([]);
   var user;
+  const [mytags, setMyTags] = useState([]);
+  const selectedTags = (tags) => {
+    setMyTags(tags)
+    return tags;
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -57,7 +62,7 @@ const EmpPostJob = () => {
     employment_type: "",
     wfh: false,
     job_desc: "",
-    skills: "",
+    skills: [],
     work_exp: {
       minExp: "",
       maxExp: "",
@@ -102,7 +107,10 @@ const EmpPostJob = () => {
 
   const submitForm = (jobDetails, e) => {
     e.preventDefault();
-
+    setJobDetails({
+      ...jobDetails,
+      skills:tags,
+    })
     console.log(jobDetails);
      if(!check(jobDetails)) {
         return
@@ -115,6 +123,7 @@ const EmpPostJob = () => {
       window.location.href = "/employer/login";
     }
   };
+
 
   return (
     
@@ -192,7 +201,9 @@ const EmpPostJob = () => {
         </div>
 
         <div className="form-item1">
-          <input
+
+        <SkillTagsInput type={"text"} selectedTags={selectedTags} tags={tags} setTags={setTags}/>
+          {/* <input
             type="text"
             className="input-aria"
             placeholder="Skills"
@@ -203,7 +214,7 @@ const EmpPostJob = () => {
                 skills: e.target.value,
               })
             }
-          />
+          /> */}
            <span className = "required">*</span>
         </div>
 

@@ -23,9 +23,10 @@ import EmpDashboard from "./Pages/EmpDashboard/EmpDashboard";
 import Applications from "./Pages/Application/Applications";
 import Recharge from "./Pages/Recharge/Recharge";
 import FecthState from "./Hooks/FecthState";
-
-
+import StudentProfile from "./Components/StudentProfile/Studentprofile";
+import JobProfile from "./Components/JobProfile/JobProfile";
 import AppliedStudnet from "./Components/AppliedStudent/AppliedStudent";
+
 const App = () => {
   const [loginModalOpen, setloginModalOpen] = useState(false);
   const [registerModalOpen, setregisterModalOpen] = useState(false);
@@ -104,13 +105,15 @@ const App = () => {
                 <Route path="details" element={<EmpDetails />}></Route>
                 <Route path="edit" element={<EditDetail />}></Route>
                 <Route path="postJob" element={<EmpPostJob />}></Route>
-               
+                <Route path="jobprofile" element={<JobProfile />}></Route>
                 <Route path="appliedStudent" element={<AppliedStudnet />}></Route>
                 <Route
                   path="viewApplications"
                   element={<Applications />}
                 ></Route>
                 <Route path="recharge" element={<Recharge />}></Route>
+                <Route path="studentprofile/*" element={<StudentProfile />}></Route>
+                <Route path="jobprofile/*" element={<JobProfile />}></Route>
               </Routes>
             </div>
           </>

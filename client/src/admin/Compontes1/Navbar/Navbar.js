@@ -3,9 +3,10 @@ import "./Navbar.css";
 import { HiOutlineHome } from "react-icons/hi";
 import { AiOutlineUser, AiOutlineLogout, AiOutlineHome } from "react-icons/ai";
 import { CiPaperplane } from "react-icons/ci";
-import { BsBriefcase } from "react-icons/bs";
+import { BsBriefcase ,BsNewspaper } from "react-icons/bs";
 import { TbFileInvoice } from "react-icons/tb";
 import { FiSettings } from "react-icons/fi";
+
 
 function Navbar() {
 
@@ -80,6 +81,15 @@ function Navbar() {
               <a href="/admin/resume" className="text-decorate">
                 {" "}
                 <span> Resume</span>
+              </a>
+            </div>
+          </li>
+          <li className={`navbarlistItem  ${activeTab === "addNews" ?"active" :""}`}  onClick={() => setActiveTab("addNews")}>
+            <div className="navItemtoggle">
+              <BsNewspaper className="listItemIcon" />
+              <a href="/admin/addNews" className="text-decorate">
+                {" "}
+                <span> Add News</span>
               </a>
             </div>
           </li>

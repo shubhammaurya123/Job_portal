@@ -288,6 +288,18 @@ router.route("/api/verifyOTP").post(async (req, res) => {
   }
 });
 
+
+//if you want to see Single job
+router.route("/api/job/:id").get(async (req, res) => {
+  try {
+    id = req.params.id
+    const job = await Jobs.find({_id:id});
+    res.json(job);
+  } catch (err) {
+    console.log("Error");
+    res.json({ status: "error", error: err });
+  }
+});
 //this api work to view allPostjob on admin page
 router.route("/api/viewAllAdminJobs").get(async (req, res) => {
   try {

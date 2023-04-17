@@ -13,7 +13,7 @@ function EmpDashboard() {
   const [data, setData] = useState([]);
   const [size, setSize] = useState();
   const [jobId, setJobId] = useState();
-  const [timeRange, setTimeRange] = useState(1);
+  const [timeRange, setTimeRange] = useState(6);
   const populateData = async () => {
     const resposne = await fetch(
       `http://localhost:9002/employer/api/RecentAppliedStudent/${employer.email}`
@@ -59,9 +59,10 @@ function EmpDashboard() {
               className="dropdown"
               onChange={(e) => setTimeRange(e.target.value)}
             >
-              <option value={1}>Last 2 Month</option>
-              <option value={3}>Last 3 Month</option>
               <option value={6}>Last 6 Month</option>
+              <option value={3}>Last 3 Month</option>
+              <option value={2}>Last 2 Month</option>
+              <option value={1}>Today</option>
             </select>
           </div>
           <DashboardChart timeRange={timeRange} />

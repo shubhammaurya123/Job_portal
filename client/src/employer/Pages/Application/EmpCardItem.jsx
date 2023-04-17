@@ -11,8 +11,27 @@ import { useContext } from "react";
 
 //  import { faAddressBook } from '@fortawesome/free-solid-svg-icons'
 function EmpCardItem(props) { 
-    const{ applicantId} = props
-     const[details , setDetails] = useState({})
+  const{ applicantId , jobId} = props
+  const[details , setDetails] = useState({})
+      const ApporveStundent = async(id)=>{
+        const res = await fetch(`http://localhost:9002/api/job/apporvedStudent/${details._id}/${jobId}`, {
+          method: "PATCH",
+         })
+
+         console.log("succesfull")
+      }
+      const RejectedStundent = async(id)=>{
+        const res = await fetch(`http://localhost:9002/api/job/rejectedStudent/${details._id}/${jobId}`, {
+          method: "PATCH",
+         })
+
+         console.log("succesfull")
+      }
+
+     const ViewProfile =()=>{
+         window.location.href = `/employer/studentprofile/${details._id}`
+     }
+     
     const getDetails = async (id) => {
         const res = await fetch('http://localhost:9002/employer/api/applicantDetails', {
             method: "POST",
@@ -77,17 +96,17 @@ function EmpCardItem(props) {
       </ul>
 
       <ul className="view-btn-style">
-        <li>
+        <li onClick={ViewProfile}>
           <div className="btn-style">
             <MdOutlineVisibility />
           </div>
         </li>
-        <li>
+        <li onClick={ApporveStundent}> 
           <div className="btn-style">
             <AiOutlineCheck />
           </div>
         </li>
-        <li>
+        <li onClick={RejectedStundent}>
           <div className="btn-style">
             <RxCrossCircled />
           </div>

@@ -35,7 +35,9 @@ function CardItem(props) {
     length
     ,item
   } = props;
-
+  const ViewProfile =()=>{
+    window.location.href = `/employer/jobprofile/${id}`
+}
   const HandleAplliedStudnet =() =>{
     localStorage.removeItem('itemJobValue')
     localStorage.setItem('itemJobValue' ,JSON.stringify(item));
@@ -101,7 +103,7 @@ function CardItem(props) {
         <div className="blue-style">Active</div>
 
         <ul className="view-btn-style-alljob">
-          <li>
+          <li onClick={ViewProfile}>
             <div className="btn-style">
               <MdOutlineVisibility />
             </div>

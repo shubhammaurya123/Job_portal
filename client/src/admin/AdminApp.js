@@ -17,6 +17,7 @@ import AllPostJob from "./Compontes1/PostJob/AllPostJob";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SingleEmployerPostJob from "./Compontes1/PostJob/SingleEmployerPostJob";
 import EmpAddFeatured from "./Compontes1/Featured/Featured";
+import AddNews from "./Compontes1/AddNews/AddNews";
 //https://github.com/shubhammaurya123/adminDashboard
 function AdminApp() {
   const ProtectedRoute = ({ children }) => {
@@ -52,6 +53,7 @@ function AdminApp() {
           <Route path="setting/addUser" element={<AddUser/>} />
           <Route path="setting/viewPermission" element={<Viewpermission/>} />
           <Route path="addFeatured" element={<EmpAddFeatured/>} />
+          <Route path="addNews" element={<AddNews />}></Route>
       </Routes>
       </FecthState>
       </div>
