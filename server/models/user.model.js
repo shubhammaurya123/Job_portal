@@ -15,6 +15,9 @@ const User = new mongoose.Schema(
 		appliedJob:{
              type:Array
 		},
+		skills : {
+			type:Array
+		},
 		bookmarkJob:{
 			type:Array
 		},

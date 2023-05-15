@@ -17,6 +17,7 @@ const JWT_SECRET_KEY = "secretKey";
 const Employer = require("../models/employerProfile.model");
 const Jobs = require("../models/employer.model");
 const Student = require("../models/user.model");
+const SuggSkill = require("../models/suggestionSkill.model");
 const { set } = require("mongoose");
 
 router.route("/").get((req, res) => {
@@ -288,12 +289,11 @@ router.route("/api/verifyOTP").post(async (req, res) => {
   }
 });
 
-
 //if you want to see Single job
 router.route("/api/job/:id").get(async (req, res) => {
   try {
-    id = req.params.id
-    const job = await Jobs.find({_id:id});
+    id = req.params.id;
+    const job = await Jobs.find({ _id: id });
     res.json(job);
   } catch (err) {
     console.log("Error");
@@ -334,18 +334,20 @@ router.route("/api/RecentAppliedStudent/:email").get(async (req, res) => {
     // console.log(req.params.email);
     var allStudents = [];
     for (let i = 0; i < posts.length; ++i) {
-      allStudents =allStudents.concat(posts[i].applied);
+      allStudents = allStudents.concat(posts[i].applied);
     }
     //for calculating the one student one time so i used this uniqueObjects function
     const uniqueObjects = allStudents.reduce((acc, obj) => {
-      if (!acc.find(item => item.studentId === obj.studentId)) {
+      if (!acc.find((item) => item.studentId === obj.studentId)) {
         acc.push(obj);
       }
       return acc;
     }, []);
-    allStudents =[...uniqueObjects];
-    const latestAppliedStudents =allStudents.sort((a, b) => b.appliedAt - a.appliedAt).slice(0,10);
-   
+    allStudents = [...uniqueObjects];
+    const latestAppliedStudents = allStudents
+      .sort((a, b) => b.appliedAt - a.appliedAt)
+      .slice(0, 10);
+
     console.log(latestAppliedStudents);
     res.json(latestAppliedStudents);
   } catch (err) {
@@ -368,6 +370,35 @@ router.route("/api/viewAllJobs").get(async (req, res) => {
   }
 });
 
+router.route("/api/verifysuggSkill").post(async (req, res) => {
+  try {
+    const id = req.body.id
+    const update = { $push: {  verify: true } };
+    const studentApplied = await SuggSkill.updateOne({_id : id}, update);
+    res.json("sucess");
+  } catch (err) {
+    console.log(`Not Ok, Error : ${err}`);
+    res.json({ status: "error", error: err });
+  }
+});
+router.route("/api/unVerifySkills").get(async (req, res) => {
+  try {
+    const allSkillsInDb = await SuggSkill.find({verifySkill : false});
+    res.json(allSkillsInDb);
+  } catch (err) {
+    console.log(`Not Ok, Error : ${err}`);
+    res.json({ status: "error", error: err });
+  }
+});
+router.route("/api/suggSkill").get(async (req, res) => {
+  try {
+    const allSkillsInDb = await SuggSkill.find({verifySkill : true});
+    res.json(allSkillsInDb);
+  } catch (err) {
+    console.log(`Not Ok, Error : ${err}`);
+    res.json({ status: "error", error: err });
+  }
+});
 router.route("/api/postJob").post(async (req, res) => {
   try {
     await Jobs.create({
@@ -376,10 +407,46 @@ router.route("/api/postJob").post(async (req, res) => {
       adminVerified: false,
     });
     console.log("ok");
+
+    const skills = req.body.jobDetails.skills;
+    const allSkillsInDb = await SuggSkill.find();
+    for (let i = 0; i < skills.length; i++) {
+      let obj = allSkillsInDb.find((item) => item.SuggSkill === skills[i]);
+      if (!obj) {
+        await SuggSkill.create({
+          SuggSkill: skills[i],
+        });
+      }
+    }
     res.json({ status: "ok" });
   } catch (err) {
     console.log(`Not Ok, Error : ${err}`);
     res.json({ status: "error", error: err });
+  }
+});
+
+router.route("/api/postedJobinformation").get(async (req, res) => {
+  try {
+    const today = new Date();
+    const startOfDay = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+    const endOfDay = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 1
+    );
+    console.log(startOfDay , endOfDay);
+    const todayJobs = await Jobs.find({
+      postedDate: { $gte: startOfDay, $lt: endOfDay },
+      postedDate: { $gte: startOfDay, $lt: endOfDay },
+    });
+    res.send(todayJobs);
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
   }
 });
 

@@ -1,6 +1,6 @@
 // Changes on merging ---> change path of employer model
 const EmployerModel = require("../models/employer.model");
-
+const StudentDB = require("../models/user.model")
 //  Return job according to user search
 const getSearchedJob = async (req, res) => {
   const workMode = ["Work from office", "Work from home", "Hybrid", "Temp WFH"];
@@ -142,7 +142,23 @@ const updateStudentApplied = async (req, res) => {
     const query = { _id: jobId };
     const update = { $push: { applied: { studentId: id } } };
     const studentApplied = await EmployerModel.updateOne(query, update);
-    res.json({ status: "ok", msg: true });
+
+
+    //now we  find if Student Skills matches more the 70% then Student Show in recommendation
+    const student = await StudentDB.findById(id);
+    const studentSkill = student.skills
+    const employer = await EmployerModel.findById(jobId);
+     const employerSkill = employer.skills
+     const matches = studentSkill.filter(value => employerSkill.includes(value));
+     const numMatches = matches.length;
+
+     const percentage = (numMatches*100)/employerSkill.length;
+      console.log(percentage);
+     if(percentage >= 70) {
+      const update = { $push: {  recommendatStudent: { studentId: id } } };
+      const studentApplied = await EmployerModel.updateOne(query, update);
+     }
+     res.json({ status: "ok", msg: true });
   } catch (e) {
     res.json({ status: "error", msg: "Something went wrong" });
   }

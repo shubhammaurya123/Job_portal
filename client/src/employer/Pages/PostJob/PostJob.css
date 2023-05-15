@@ -130,7 +130,10 @@
     color: white;
 
 } */
-
+.activeVal{
+    border-radius: 4px;
+    border: 2px solid red;
+}
 .add-btn{
     text-align: center;
     white-space: nowrap;
@@ -149,10 +152,10 @@
     margin-bottom: 30px;
 }
 .posjob-icon-all-style{
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+   
 }
 .icon-style-postjob{
     position: relative;

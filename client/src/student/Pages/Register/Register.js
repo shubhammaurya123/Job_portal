@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Register.css";
 import checkPasswordStrength from "../../controllers/PasswordChecker";
 import PasswordInput from "../../Component/PasswordInput";
-
+import SkillTagsInput from "../../../employer/Components/SkillTagInput/SkillTagInput";
 const Register_new = () => {
   const [passwordStrength, setPasswordStrength] = useState("");
   const [missingChars, setMissingChars] = useState([]);
@@ -13,8 +13,15 @@ const Register_new = () => {
     age: "",
     gender: "",
     mobile: "",
+    skills :[]
   });
- 
+  const [tags, setTags] = React.useState([]);
+  const [mytags, setMyTags] = useState([]);
+  const selectedTags = (tags) => {
+    setMyTags(tags)
+    return tags;
+  };
+
   const [error, setError] = useState("");
   const [dupEmail, setDupEmail] = useState(false);
   const [dupPhone, setDupPhone] = useState(false);
@@ -50,8 +57,9 @@ const Register_new = () => {
             mobile,
             age,
             gender,
-            profileCompleted: true,
-          }),
+            profileCompleted: true,   
+            skills:tags,
+             }),
         });
         const user_data = await response.json();
         console.log(user_data);
@@ -176,6 +184,7 @@ const Register_new = () => {
             value="Female"
             onClick={(e) => setData({ ...data, gender: e.target.value })}
           />
+          
           <label htmlFor="female">Female</label>
           <br />
           <input
@@ -201,8 +210,10 @@ const Register_new = () => {
             required
           />
           <br />
+         
           <button type="submit">Generate OTP</button>
         </form>
+        <SkillTagsInput type={"text"} selectedTags={selectedTags} tags={tags} setTags={setTags}/>
         <div className="error-ct">
           <p>{error}</p>
           {dupEmail && <p>Email Already Exists!</p>}

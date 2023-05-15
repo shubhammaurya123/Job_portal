@@ -134,10 +134,12 @@
     margin-bottom: 30px;
 }
 .posjob-icon-all-style{
-    width: 70%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 50px;
+    
 }
 .icon-style-postjob{
     position: relative;

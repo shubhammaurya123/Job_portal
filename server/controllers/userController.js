@@ -182,7 +182,7 @@ const sendUserOtp = async (req, res, next) => {
   };
 
   // Enter the details in the database with "verified" property set to false
-  const { name, password, email, mobile, age, gender } = req.body;
+  const { name, password, email, mobile, age, gender , skills } = req.body;
 
   // Hashing the password using bcrypt library
   const salt = await bcrypt.genSalt(10);
@@ -197,6 +197,7 @@ const sendUserOtp = async (req, res, next) => {
       mobile,
       age,
       gender,
+      skills,
       password: hashedPassword,
       verified: false,
       //OTP expires after 10 minutes

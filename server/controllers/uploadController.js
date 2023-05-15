@@ -6,7 +6,6 @@ const { promisify } = require("util");
 const unlinkAsync = promisify(fs.unlink);
 
 exports.uploadController = async (req, res) => {
- 
   let client = new Vimeo(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,

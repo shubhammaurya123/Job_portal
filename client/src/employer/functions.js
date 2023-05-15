@@ -122,7 +122,7 @@ export const check =(jobDetails) =>{
 }
 export const createPost = async (jobDetails, e) => {
   e.preventDefault();
-  console.log(jobDetails.postedBy);
+ 
   const response = await fetch("http://localhost:9002/employer/api/postJob", {
     method: "POST",
     headers: {

@@ -113,6 +113,14 @@ const employerJobSchema = new mongoose.Schema({
       _id: false,
     },
   ],
+
+  recommendatStudent:[
+    {
+      studentId: { type: String },
+      appliedAt: { type: Date, default: Date.now },
+      _id: false,
+    },
+  ],
   // -----Changes by Shivangi singh --->
   work_exp: {
     minExp: { type: Number },

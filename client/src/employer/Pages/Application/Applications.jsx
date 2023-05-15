@@ -7,8 +7,9 @@ function Applications() {
   const [data, setData] = useState([{}]);
   const [details, setDetails] = useState([{}]);
   const [jobId, setJobId] = useState();
-  const[rejctedStudent , setRejectedStudent] = useState();
-  const[approvedStudent , setApprovedStudent] = useState();
+  const [rejctedStudent, setRejectedStudent] = useState();
+  const [approvedStudent, setApprovedStudent] = useState();
+  const [recommendation, setRecommendation] = useState();
   const [job, setJob] = useState();
   const populateData = async () => {
     const token = localStorage.getItem("token");
@@ -20,7 +21,7 @@ function Applications() {
     console.log("jsonDATA", jsonData);
     setDetails(jsonData);
   };
- 
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -39,14 +40,16 @@ function Applications() {
     // console.log("details", details, jobId);
     const jobVal = details.filter((element) => element._id === jobId);
     console.log(jobVal);
-    setData(jobVal[0].applied);setJob(jobVal[0].applied)
-    setRejectedStudent(jobVal[0].rejectedStudentId)
-    setApprovedStudent(jobVal[0].approvedStudentId)
-    
-   
+    setData(jobVal[0].applied);
+    setJob(jobVal[0].applied);
+
+    setRejectedStudent(jobVal[0].rejectedStudentId);
+    setApprovedStudent(jobVal[0].approvedStudentId);
+
+    setRecommendation(jobVal[0].recommendatStudent);
   }, [jobId]);
   // console.log(job)
-  console.log(rejctedStudent ,"rejected");
+  console.log(rejctedStudent, "rejected");
   return (
     <div className="studentApp">
       <h2 className="student-text">Application!</h2>
@@ -62,25 +65,35 @@ function Applications() {
               onChange={(e) => setJobId(e.target.value)}
             >
               {details.map((element, ind) => {
-              
                 return <option value={element._id}> {element._id}</option>;
               })}
             </select>
           </div>
         </div>
         <ul className="studentlistItem">
-          
-          <li className="blue-style" onClick={()=>setData(job)}>Total(s):{job ?job.length :0} </li>
-          <li className="blue-style">Recommendation: </li>
-          <li className="approved-style" onClick={()=>setData(approvedStudent)}>Approved: {approvedStudent ?approvedStudent.length :0}</li>
-          <li className="reject-style" onClick={()=>setData(rejctedStudent)}>Rejected(s): {rejctedStudent ?rejctedStudent.length:0}</li>
+          <li className="blue-style" onClick={() => setData(job)}>
+            Total(s):{job ? job.length : 0}{" "}
+          </li>
+          <li className="blue-style" onClick={() => setData(recommendation)}>
+            Recommendation: {recommendation ? recommendation.length : 0}
+          </li>
+          <li
+            className="approved-style"
+            onClick={() => setData(approvedStudent)}
+          >
+            Approved: {approvedStudent ? approvedStudent.length : 0}
+          </li>
+          <li className="reject-style" onClick={() => setData(rejctedStudent)}>
+            Rejected(s): {rejctedStudent ? rejctedStudent.length : 0}
+          </li>
         </ul>
 
         <div className="studentAllcardItem">
           {data &&
             data.map((applicant, ind) => {
-              
-              return <EmpCardItem applicantId={applicant.studentId} jobId ={jobId}/>;
+              return (
+                <EmpCardItem applicantId={applicant.studentId} jobId={jobId} />
+              );
             })}
         </div>
       </div>

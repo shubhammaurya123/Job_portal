@@ -17,3 +17,19 @@
     margin-top: 5px;
 
 }
+.tag-style1{
+  
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.showTags1{
+    margin-top: 40x;
+    list-style: none ;
+
+    height: 200px;
+    overflow: scroll;
+    
+    display: flex;
+    flex-direction: column;
+    gap :10px;
+}

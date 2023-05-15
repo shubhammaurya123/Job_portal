@@ -17,6 +17,7 @@ import AllPostJob from "./Compontes1/PostJob/AllPostJob";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SingleEmployerPostJob from "./Compontes1/PostJob/SingleEmployerPostJob";
 import EmpAddFeatured from "./Compontes1/Featured/Featured";
+import VerfiySkills from "./Compontes1/VerifySkills/VerifySkill";
 import AddNews from "./Compontes1/AddNews/AddNews";
 //https://github.com/shubhammaurya123/adminDashboard
 function AdminApp() {
@@ -47,6 +48,7 @@ function AdminApp() {
           <Route path="resume" element={<Resume />} />
           <Route path="EmployerPostjob/*" element={<SingleEmployerPostJob/>} />
           <Route path="postjob" element={<PostJob />} />
+          <Route path="verfiySkill" element={<VerfiySkills />} />
           <Route path="postjob/AllPostJobs" element={<AllPostJob/>} />
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path="setting/roles&Permission" element={<RolesPermission/>} />
